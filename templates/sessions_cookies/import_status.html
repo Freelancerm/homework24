@@ -1,0 +1,25 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-lg-7">
+        <div class="alert alert-success shadow-sm" role="alert">
+            <h4 class="alert-heading">✅ Завдання імпорту створено!</h4>
+            <p>
+                Ваш запит на імпорт книг було успішно передано до Celery Broker (Redis).
+                Worker-процес виконає його у фоновому режимі.
+            </p>
+            <hr>
+            <p class="mb-0">Унікальний ID завдання (Task ID): 
+                <code class="fw-bold">{{ task_id }}</code>
+            </p>
+            <p class="mt-2 small text-muted">
+                Перевірте консоль вашого запущеного Celery worker-а, щоб побачити підтвердження виконання і створені книги.
+            </p>
+            
+            <a href="{% url 'greeting' %}" class="btn btn-success mt-3">На головну</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

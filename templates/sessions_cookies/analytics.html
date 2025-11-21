@@ -1,0 +1,20 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<h2 class="mb-4">📚 Аналітика книг</h2>
+<div class="list-group shadow-sm">
+    {% for book in stats %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="mb-1">{{ book.title }}</h5>
+                <small class="text-muted">Автор: {{ book.author.name }}</small>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-primary rounded-pill">Відгуків: {{ book.total_reviews }}</span>
+                <span class="badge bg-warning text-dark rounded-pill">Рейтинг: {{ book.avg_rating|floatformat:1 }}</span>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info">Дані відсутні. Спробуйте спочатку запустити Benchmark.</div>
+    {% endfor %}
+</div>
+{% endblock %}

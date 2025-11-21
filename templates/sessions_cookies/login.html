@@ -1,0 +1,26 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h3 class="text-center mb-4">Вхід в систему</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Ваше ім'я</label>
+                        <input type="text" name="name" class="form-control" placeholder="Введіть ім'я" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ваш вік</label>
+                        <input type="number" name="age" class="form-control" placeholder="25" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Увійти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

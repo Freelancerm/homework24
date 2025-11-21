@@ -1,0 +1,18 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0">🛠 Raw SQL Query</h4>
+    </div>
+    <div class="card-body">
+        <p>Результат виконання "чистого" SQL запиту:</p>
+        <code>SELECT * FROM sessions_cookies_book WHERE rating >= 0 LIMIT 5</code>
+        <hr>
+        <ul class="list-group list-group-flush">
+            {% for book in books %}
+                <li class="list-group-item">{{ book.title }} <span class="text-muted">(ID: {{ book.id }})</span></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

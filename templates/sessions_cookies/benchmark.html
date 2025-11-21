@@ -1,0 +1,42 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">📊 Результати тестування ORM</h4>
+    </div>
+    <div class="card-body">
+        <p>Порівняння швидкості виконання запитів (N+1 проти select_related).</p>
+
+        <div class="alert alert-success text-center shadow-sm">
+            🚀 Оптимізований запит працює у
+            <strong class="fs-4">{{ speedup|floatformat:1 }}</strong>
+            разів швидше!
+        </div>
+        <table class="table table-striped table-hover mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Тип запиту</th>
+                    <th>Технологія</th>
+                    <th>Час (сек)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🔴 Поганий</td>
+                    <td>N+1 Problem</td>
+                    <td>{{ time_bad|floatformat:5 }}</td>
+                </tr>
+                <tr>
+                    <td>🟢 Хороший</td>
+                    <td><code>select_related</code></td>
+                    <td class="fw-bold text-success">{{ time_good|floatformat:5 }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+             <a href="{% url 'benchmark' %}" class="btn btn-outline-primary btn-sm">🔄 Повторити тест</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

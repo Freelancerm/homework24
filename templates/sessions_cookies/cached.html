@@ -1,0 +1,33 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<div class="card border-info mb-3 shadow-sm">
+    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">⚡ Redis Cache Test</h4>
+        <span class="badge bg-white text-info fs-6">
+            ⏱ {{ execution_time|floatformat:5 }} сек
+        </span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Статус джерела даних:</h5>
+        <div class="mb-3">
+            {% if is_cached %}
+                <span class="badge bg-success p-2 fs-6">🚀 Взято з Кешу (Redis)</span>
+                <p class="text-muted mt-2 small">Дані отримані миттєво з оперативної пам'яті.</p>
+            {% else %}
+                <span class="badge bg-secondary p-2 fs-6">🐢 Взято з Бази Даних (SQL)</span>
+                <p class="text-muted mt-2 small">Був виконаний запит до БД, і результат збережено в Redis.</p>
+            {% endif %}
+        </div>
+
+        <hr>
+        <p class="card-text">Кількість книг у списку: <strong>{{ count }}</strong></p>
+
+        <div class="alert alert-light border mt-3">
+            <i class="bi bi-info-circle"></i>
+            Натисніть F5 (оновити), щоб побачити різницю в часі.
+        </div>
+
+        <a href="{% url 'cached' %}" class="btn btn-outline-info mt-2">🔄 Оновити сторінку</a>
+    </div>
+</div>
+{% endblock %}

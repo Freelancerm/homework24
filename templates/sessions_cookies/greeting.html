@@ -1,0 +1,12 @@
+{% extends 'sessions_cookies/base.html' %}
+{% block content %}
+<div class="card text-center p-5 shadow-sm">
+    <div class="card-body">
+        <h1 class="display-4 text-primary">Привіт, {{ name }}! 👋</h1>
+        <p class="lead">Раді бачити вас знову. За нашими даними вам <strong>{{ age }}</strong> років.</p>
+        <hr class="my-4">
+        <p class="text-muted">Ваша сесія активна, а cookies автоматично подовжуються.</p>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Вийти з акаунту</a>
+    </div>
+</div>
+{% endblock %}
